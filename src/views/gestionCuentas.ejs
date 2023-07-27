@@ -1,0 +1,50 @@
+<%- layout ('layouts/main.ejs') %> 
+<% if(usuario.rol == 2){ %>
+<div class="conteiner">
+    <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th scope="cool">
+                        <div class="row no-gutters">
+                            <div class="col-md-10">
+                                Nombre
+                            </div>
+                        </div>
+                    </th>
+                    <th scope="cool">Estados</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i=0 ; i < cuentas.length ; i++) { %>
+                    <tr>
+                        <th scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-11">
+                                    <%= cuentas[i].nombreFamilia %>
+                                </div>
+                                <div class="col-md-1 d-flex flex-row-reverse">
+                                    <a href="/deleteCuenta/<%= cuentas[i]._id %>">
+                                        <img src="../img/baseline_delete_black_18dp.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </th>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= cuentas[i].rol %>
+                                </div>
+                                <div class="col-md-2 d-flex flex-row-reverse">
+                                    <a href="/subirRol/<%= cuentas[i]._id %>"><img src="../img/baseline_add_black_18dp.png"></a>
+                                    <a href="/bajarRol/<%= cuentas[i]._id %>"><img src="../img/baseline_remove_black_18dp.png"></a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div> 
+<% } %>  

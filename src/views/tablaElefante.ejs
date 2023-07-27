@@ -1,0 +1,91 @@
+<%- layout ('layouts/main.ejs') %>
+<% if(usuario.rol == 1 || usuario.rol == 2){ %>
+    <div class="conteiner">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col mb-4">
+                <a href="agregarMElefante">
+                    <button type="submit" class="btn btn-primary btn-block mt-4">
+                        Agregar Material
+                    </button>
+                </a> 
+            </div>
+            <div class="col mb-4">
+                <a href="tablaMMiembros">
+                    <button type="submit" class="btn btn-primary btn-block mt-4">
+                        Ver materiales de cada miembro
+                    </button>
+                </a> 
+            </div>
+
+        </div>
+    </div>
+<% } %>
+<div class="conteiner">
+    <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th scope="cool">
+                        <div class="row no-gutters">
+                            <div class="col-md-10">
+                                Material
+                            </div>
+                            <% if(usuario.rol == 2){ %>
+                                <div class="col-md-2 d-flex flex-row-reverse">
+                                    <a href="agregarMaterial">
+                                        <img src="../img/baseline_add_to_photos_black_18dp.png">
+                                    </a> 
+                                </div>
+                            <% } %>
+                        </div>
+                    </th>
+                    <th scope="cool"> Cantidad requerida</th>
+                    <th scope="cool">Faltan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i=0 ; i < material.length ; i++) { %>
+                    <tr>
+                        <th scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-11">
+                                    <%= material[i].material %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-1 d-flex flex-row-reverse" >
+                                        <a href="/deleteMaterial/<%= material[i]._id %>">
+                                            <img src="../img/baseline_delete_black_18dp.png">
+                                        </a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </th>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= material[i].cantidad %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-2 d-flex flex-row-reverse">
+                                        <a href="/sumarMaterial/<%= material[i]._id %>"><img src="../img/baseline_add_black_18dp.png"></a>
+                                        <a href="/restarMaterial/<%= material[i]._id %>"><img src="../img/baseline_remove_black_18dp.png"></a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </td>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= material[i].faltan %>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>   
+
+
+  

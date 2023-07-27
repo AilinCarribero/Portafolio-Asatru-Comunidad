@@ -1,0 +1,32 @@
+<%- layout('layouts/main.ejs') %>
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-2">
+    <% for (var i=0 ; i < galeria.length ; i++) { %>
+      <div class="col mb-4">
+        <div class="card">
+          <img src="<%= galeria[i].img %>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"> <%= galeria[i].titulo %> </h5>
+            <p class="card-text"><%= galeria[i].descripcion %></p>
+            <% if(usuario && usuario.rol == 2) { %>
+              <a href="/deleteImg/<%= galeria[i]._id %>" style="display: flex; justify-content: right;">
+                <img src="../img/baseline_delete_black_18dp.png">
+              </a>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+  <% if(usuario) { %>
+  <% if(usuario.rol == 1 || usuario.rol == 2){ %>
+    <div>
+      <a href="/agregarGaleria">
+        <button type="submit button" class="btn btn-primary btn-lg btn-block">
+            Agregar Imagen
+        </button>
+      </a>
+    </div>
+  <% }} %>
+
+</div>

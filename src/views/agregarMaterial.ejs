@@ -1,0 +1,51 @@
+<%- layout ('layouts/main.ejs') %>
+<% if(usuario.rol==2){ %>
+<div class="container-fluid mt-4" style="height: 100%; width: 100%;">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card mt-4 text-center">
+                <div class="card-header">
+                    <h3>Materiales para el Elefante</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/agregarMaterial" method="POST">
+                        <div class="form-group">
+                            <label>Material</label>
+                            <select class="form-control" name="material">
+                                <option selected>Selecciona un material</option>
+                                <option value="Carbón Procesado">Carbón Procesado</option>
+                                <option value="Polvo de Piedra Negra">Polvo de Piedra Negra</option>
+                                <option value="Savia de Pino">Savia de Pino</option>
+                                <option value="Mineral de Rubí">Mineral de Rubí</option>
+                                <option value="Madera de Cedro Blanco">Madera de Cedro Blanco</option>
+                                <option value="Cristal Áspero Traslúcido">Cristal Áspero Traslúcido</option>
+                                <option value="Símbolo de Cadry">Símbolo de Cadry</option>
+                                <option value="Sangre de Cabra">Sangre de Cabra</option>
+                                <option value="Polvo de Oscuridad">Polvo de Oscuridad</option>
+                                <option value="Piel de Vaca">Piel de Vaca</option>
+                                <option value="Fruto Mágico">Fruto Mágico</option>
+                                <option value="Sangre de Hombre Sabio">Sangre de Hombre Sabio</option>
+                                <option value="Sangre de Lobo">Sangre de Lobo</option>
+                                <option value="Polvo de la Grieta">Polvo de la Grieta</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad del Material</label>
+                            <input class="form-control" type="number" name="cantidad" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad del Material Faltante</label>
+                            <input class="form-control" type="number" name="faltan" value="0">
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-block mt-4">
+                                Agregar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>

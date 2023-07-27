@@ -1,0 +1,41 @@
+<%- layout ('layouts/main.ejs') %>        
+<table>
+    <thead>
+        <tr>
+            <th scope="cool">Nombre de Miembro</th>
+            <th scope="cool">Caza Maritima</th>
+            <th scope="cool">Puntos</th>
+            <th scope="cool">Nodewar</th>
+            <th scope="cool">Puntos</th>
+            <th scope="cool">Total de puntos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (var i=0 ; i < miembros.nombre[i] ; i++) { %>
+            <tr>
+                <th scope="cool"><%= miembros[i].nombre %>
+                    <button>
+                        <a href="/delete/<%= miembros[i]._id %>">
+                            Borrar
+                        </a>
+                    </button>
+                </th>
+                <td scope="cool"><%= miembros[i].puntosCaza %>
+                    <a href="/sumarCaza/<%= miembros[i]._id %>"><button>+</button></a>
+                    <a href="/restarCaza/<%= miembros[i]._id %>"><button>-</button></a>
+                </td>
+                <td scope="cool" class="table-secondary">
+                    <%= miembros[i].puntosCaza / 20000000 %>
+                </td>
+                <td scope="cool"><%= miembros[i].puntosNode %>
+                    <a href="/sumarNode/<%= miembros[i]._id %>"><button>+</button></a>
+                    <a href="/restarNode/<%= miembros[i]._id %>"><button>-</button></a>
+                </td>
+                <td scope="cool" class="table-secondary">
+                    <%= miembros[i].puntosNode * 3 %>
+                </td>
+                <th scope="cool" class="table-danger"></th>
+            </tr>
+        <% } %>
+    </tbody>
+</table>

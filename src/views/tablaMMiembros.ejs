@@ -1,0 +1,61 @@
+<%- layout('layouts/main.ejs') %>
+<div class="conteiner mt-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th scope="cool">
+                        <div class="row no-gutters">
+                            <div class="col-md-10">
+                                Nombre de Miembro
+                            </div>
+                            <% if(usuario.rol == 1 || usuario.rol == 2){ %>
+                                <div class="col-md-2 d-flex flex-row-reverse">
+                                    <a href="agregarMElefante">
+                                        <img src="../img/baseline_add_to_photos_black_18dp.png">
+                                    </a> 
+                                </div>
+                            <% } %>
+                        </div>
+                    </th>
+                    <th scope="cool">Material</th>
+                    <th scope="cool">Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i=0 ; i < materialMiembro.length ; i++) { %>
+                    <tr>
+                        <th scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-11">
+                                    <%= materialMiembro[i].nombre %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-1 d-flex flex-row-reverse">
+                                        <a href="/deleteMMaterial/<%= materialMiembro[i]._id %>">
+                                            <img src="../img/baseline_delete_black_18dp.png">
+                                        </a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </th>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= materialMiembro[i].material %>
+                                </div>
+                            </div>
+                        </td>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= materialMiembro[i].cantMaterial %>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div> 

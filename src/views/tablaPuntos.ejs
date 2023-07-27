@@ -1,0 +1,173 @@
+<%- layout ('layouts/main.ejs') %> 
+<div class="conteiner mt-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th scope="cool">
+                        <div class="row no-gutters">
+                            <div class="col-md-10">
+                                Nombre de Miembro
+                            </div>
+                            <% if(usuario.rol == 2){ %>
+                                <div class="col-md-2 d-flex flex-row-reverse">
+                                    <a href="agregarMiembro">
+                                        <img src="../img/baseline_add_to_photos_black_18dp.png">
+                                    </a> 
+                                </div>
+                            <% } %>
+                        </div>
+                    </th>
+                    <th scope="cool">Caza Maritima</th>
+                    <th scope="cool">Puntos</th>
+                    <th scope="cool">Extra</th>
+                    <th scope="cool">Puntos</th>
+                    <th scope="cool">Nodewar</th>
+                    <th scope="cool">Puntos</th>
+                    <th scope="cool">Nodewars Peleadas</th>
+                    <th scope="cool">Trina y Piedra</th>
+                    <th scope="cool">Puntos</th>
+                    <th scope="cool">Acumulados</th>
+                    <th scope="cool">Canje</th>
+                    <th scope="cool">Total de puntos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i=0 ; i < miembros.length ; i++) { %>
+                    <tr>
+                        <th scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-11">
+                                    <%= miembros[i].nombre %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-1 d-flex flex-row-reverse">
+                                        <a href="/delete/<%= miembros[i]._id %>">
+                                            <img src="../img/baseline_delete_black_18dp.png">
+                                        </a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </th>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= miembros[i].caza %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-2 d-flex flex-row-reverse">
+                                        <a href="/sumarCaza/<%= miembros[i]._id %>"><img src="../img/baseline_add_black_18dp.png"></a>
+                                        <a href="/restarCaza/<%= miembros[i]._id %>"><img src="../img/baseline_remove_black_18dp.png"></a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </td>
+                        <td scope="cool" class="table-secondary">
+                            <%= miembros[i].puntosCaza %>
+                        </td>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= miembros[i].extras %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-2 d-flex flex-row-reverse">
+                                        <a href="/sumarExtras/<%= miembros[i]._id %>"><img src="../img/baseline_add_black_18dp.png"></a>
+                                        <a href="/restarExtras/<%= miembros[i]._id %>"><img src="../img/baseline_remove_black_18dp.png"></a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </td>
+                        <td scope="cool" class="table-secondary">
+                            <%= miembros[i].puntosExtras %>
+                        </td>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-8">
+                                    <%= miembros[i].node %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-2 d-flex flex-row-reverse">
+                                        <a href="/sumarNode/<%= miembros[i]._id %>"><img src="../img/baseline_add_black_18dp.png"></a>
+                                        <a href="/restarNode/<%= miembros[i]._id %>"><img src="../img/baseline_remove_black_18dp.png"></a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </td>
+                        <td scope="cool" class="table-secondary">
+                            <%= miembros[i].puntosNode %>
+                        </td>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= miembros[i].cantNodewars %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-2 d-flex flex-row-reverse">
+                                        <a href="/sumarCant/<%= miembros[i]._id %>"><img src="../img/baseline_add_black_18dp.png"></a>
+                                        <a href="/restarCant/<%= miembros[i]._id %>"><img src="../img/baseline_remove_black_18dp.png"></a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </td>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= miembros[i].TyP %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-2 d-flex flex-row-reverse">
+                                        <a href="/sumarTyP/<%= miembros[i]._id %>"><img src="../img/baseline_add_black_18dp.png"></a>
+                                        <a href="/restarTyP/<%= miembros[i]._id %>"><img src="../img/baseline_remove_black_18dp.png"></a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </td>
+                        <td scope="cool" class="table-secondary">
+                            <%= miembros[i].puntosTyP %>
+                        </td>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= miembros[i].puntosSobrantes %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-2 d-flex flex-row-reverse">
+                                        <a href="/sumarSobrantes/<%= miembros[i]._id %>"><img src="../img/baseline_add_black_18dp.png"></a>
+                                        <a href="/restarSobrantes/<%= miembros[i]._id %>"><img src="../img/baseline_remove_black_18dp.png"></a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </td>
+                        <td scope="cool">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= miembros[i].canje %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-2 d-flex flex-row-reverse">
+                                        <a href="/sumarCanje/<%= miembros[i]._id %>"><img src="../img/baseline_add_black_18dp.png"></a>
+                                        <a href="/restarCanje/<%= miembros[i]._id %>"><img src="../img/baseline_remove_black_18dp.png"></a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </td>
+                        <th scope="cool" class="table-danger">
+                            <div class="row no-gutters">
+                                <div class="col-md-10">
+                                    <%= ((miembros[i].puntosCaza + miembros[i].puntosExtras + miembros[i].puntosNode + miembros[i].puntosSobrantes + miembros[i].puntosTyP) - miembros[i].canje) %>
+                                </div>
+                                <% if(usuario.rol == 2){ %>
+                                    <div class="col-md-2 d-flex flex-row-reverse">
+                                        <a href="/volverCero/<%= miembros[i]._id %>"><img src="../img/baseline_settings_backup_restore_black_18dp.png"></a>
+                                    </div>
+                                <% } %>
+                            </div>
+                           
+                        </th>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>   

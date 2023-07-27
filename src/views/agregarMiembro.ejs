@@ -1,0 +1,55 @@
+<%- layout ('layouts/main.ejs') %>
+<% if(usuario.rol == 2){ %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card mt-4 text-center">
+                <div class="card-header">
+                    <h3>Nuevo Miembro</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/agregarMiembro" method="POST">
+                        <div class="form-group">
+                            <label>Nombre de familia</label>
+                            <input class="form-control" type="text" name="nombre" >
+                        </div>
+                        <div class="form-group">
+                            <label>Total $ obtenido de caza maritima</label>
+                            <input class="form-control" type="number" name="caza" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad de actividad extra</label>
+                            <input class="form-control" type="number" name="extra" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad de asistencia a nodewar</label>
+                            <input class="form-control" type="number" name="node" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad de nodewars asistidas</label>
+                            <input class="form-control" type="number" name="cantNodewars" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad de veces que se llevo trina y piedra pulidad</label>
+                            <input class="form-control" type="number" name="TyP" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad de puntos acumulados</label>
+                            <input class="form-control" type="number" name="puntosSobrantes" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad de puntos a canjear</label>
+                            <input class="form-control" type="number" name="canje" value="0">
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-block mt-4">
+                                Agregar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
